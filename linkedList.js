@@ -69,10 +69,13 @@ llist.insert(0,0);
 llist.insert(1,1);
 llist.insert(2,2);
 llist.insert(1,199);
+llist.insert(3,':D')
 
 llist.delete(1);
 // console.log(llist);
 // llist.delete(0);
 
 console.log(llist);
+
+console.log(llist.get(2));
 

@@ -11,15 +11,15 @@ class LinkedList {
       throw new Error('Index error');
     }
 
-    let node = this.head;
-
     let newNode = {
       value
     };
 
     if(index === 0){
+      console.log('here');
       newNode.next = this.head;
       this.head = newNode;
+      console.log('hhhhhhh ', this.head);
     }
 
     else{
@@ -31,6 +31,20 @@ class LinkedList {
     this.length++;
   }
 
+  delete(index){
+    if(index<0 || index >= this.length){
+      throw new Error('Can not delete past length or before 0');
+    }
+
+    if(index === 0){
+      this.head = this.head.next;
+    }else{
+      const prevNode = this._find(index-1);
+      prevNode.next = prevNode.next.next;
+    }
+    this.length--;
+  }
+
   _find(index){
     let node = this.head;
     for(let i=0; i < index;i++){
@@ -39,3 +53,18 @@ class LinkedList {
     return node;
   }
 }
+
+const llist  = new LinkedList();
+
+console.log(llist);
+llist.insert(0,0);
+llist.insert(1,1);
+llist.insert(2,2);
+llist.insert(1,199);
+
+llist.delete(1);
+// console.log(llist);
+// llist.delete(0);
+
+console.log(llist);
+

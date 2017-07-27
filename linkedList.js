@@ -72,17 +72,24 @@ function printList(list){
 }
 
 function size(list){
-  return list.length;
+  let counter=0;
+  let node = list.head;
+  while(node.next !== null){
+    node = node.next;
+    counter++;
+  }
+  counter++;
+  return counter;
 }
 
 function isEmpty(list){
-  if(list.length === 0){
+  if(list.head === null){
     return true;
   }
   return false;
 }
 
-function findPrevious(list, index){
+function findPrevious(index, list){
   if(isEmpty(list)){
     throw new Error('Linked List is empty')
   }
@@ -94,6 +101,16 @@ function findPrevious(list, index){
     return list.get(index-1);
   }
 }
+
+// function findLast(index, list){
+//   if(isEmpty(list)){
+//     throw new Error('Linked List is empty');
+//   }
+//   else{
+
+//   }
+// }
+
 
 
 
@@ -133,3 +150,40 @@ printList(llist);
 console.log('/////////////////');
 console.log('/////////////////');
 
+console.log('/////////////////');
+console.log('Is the one we just made empty?');
+console.log('/////////////////');
+console.log(isEmpty(llist));
+console.log('/////////////////');
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Finding the one before you nod');
+console.log('/////////////////');
+console.log(findPrevious(2, llist));
+console.log('/////////////////');
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Verifying that counting works as intended');
+console.log('/////////////////');
+console.log(size(llist));
+console.log('/////////////////');
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Creating A New, Empty Linked List.');
+console.log('/////////////////');
+const elist  = new LinkedList();
+
+console.log('/////////////////');
+console.log('Is the empty one empty?');
+console.log('/////////////////');
+console.log(isEmpty(elist));
+console.log('/////////////////');
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Can we inset into the first index 1 of an empty list?');
+console.log('/////////////////');
+elist.insert(1,':)');

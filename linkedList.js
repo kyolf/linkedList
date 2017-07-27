@@ -128,8 +128,22 @@ function findLast(list){
 
 
 function findMiddle(list){
-
+  let node = list.head;
+  let returnNode = list.head;
+  while(node.next !== null && node.next.next !== null){
+    node = node.next.next;
+    returnNode = returnNode.next;
+  }
+  return returnNode.value;
 }
+
+  // _find(index){
+  //   let node = this.head;
+  //   for(let i=0; i < index;i++){
+  //     node = node.next;
+  //   }
+  //   return node;
+  // }
 
 function findThirdToLast(list){
   if(isEmpty(list)){
@@ -180,15 +194,31 @@ function reverseList(list){
   return list;
 }
 
+// function isCycleList(list){
+//   let node = list.head;
+//   const objTracker = {};
+//   while(node.next !== null){
+//     if( objTracker[node.value]){
+//       return true;
+//     }
+//     objTracker[node.value] = node.value;
+//     node = node.next;
+//   }
+//   return false;
+// }
+
 function isCycleList(list){
-  let node = list.head;
-  const objTracker = {};
-  while(node.next !== null){
-    if( objTracker[node.value]){
+  if(isEmpty(list)){
+    return false;
+  }
+  let slowNode = list.head;
+  let fastNode = list.head;
+  while(fastNode.next !== null && fastNode.next.next !== null){
+    fastNode = fastNode.next.next;
+    slowNode = slowNode.next;
+    if(fastNode === slowNode){
       return true;
     }
-    objTracker[node.value] = node.value;
-    node = node.next;
   }
   return false;
 }
@@ -301,4 +331,10 @@ console.log('/////////////////');
 console.log('Checking if is Cycle list works.');
 console.log('/////////////////');
 console.log(isCycleList(cycleList));
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Finding the middle');
+console.log('/////////////////');
+console.log(findMiddle(llist));
 console.log('/////////////////');

@@ -52,6 +52,14 @@ class LinkedList {
     }
     return node;
   }
+
+  get(index){
+    if (index < 0 || index >= this.length) {
+      throw new Error('Index error');
+    }
+    let node = this._find(index);
+    return node.value;
+  }
 }
 
 const llist  = new LinkedList();

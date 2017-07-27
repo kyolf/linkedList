@@ -16,10 +16,8 @@ class LinkedList {
     };
 
     if(index === 0){
-      console.log('here');
       newNode.next = this.head;
       this.head = newNode;
-      console.log('hhhhhhh ', this.head);
     }
 
     else{
@@ -62,20 +60,50 @@ class LinkedList {
   }
 }
 
+function printList(list){
+  for(let i=0; i < list.length; i++){
+    console.log('value:', list.get(i), 'index:', i);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////// INVOKING AND TESTING ///////////////////////////
+console.log('/////////////////');
+console.log('Creating Linked List.');
+console.log('/////////////////');
 const llist  = new LinkedList();
 
-console.log(llist);
-llist.insert(0,0);
-llist.insert(1,1);
-llist.insert(2,2);
-llist.insert(1,199);
-llist.insert(3,':D')
+llist.insert(0,'Hello');
+llist.insert(1,'Is there anybody in there?');
+llist.insert(2,'Just nod if you can hear me.');
+llist.insert(3,'Is there anybody home?');
+llist.insert(2, "I don't belong.");
 
-llist.delete(1);
-// console.log(llist);
-// llist.delete(0);
+console.log('/////////////////');
+console.log('Running printList');
+console.log('/////////////////');
+printList(llist);
+console.log('/////////////////');
+console.log('/////////////////');
 
-console.log(llist);
+console.log('/////////////////');
+console.log('Deleting the one that doesn\'t belong');
+llist.delete(2);
+console.log('/////////////////');
 
-console.log(llist.get(2));
+console.log('/////////////////');
+console.log('Running printList again');
+console.log('/////////////////');
+printList(llist);
+console.log('/////////////////');
+console.log('/////////////////');
 

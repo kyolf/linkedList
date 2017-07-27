@@ -65,14 +65,20 @@ function printList(list){
     console.log('Empty list');
   }
   else{
-    for(let i=0; i < list.length; i++){ ///// CHANGE THIS TO WHILE LOOP
-      console.log(list.get(i));
+    let node = list.head;
+    console.log(node.value);
+    while(node.next!== null){
+      node = node.next;
+      console.log(node.value);
     }
   }
 }
 
 function size(list){
   let counter=0;
+  if(isEmpty(list)){
+    return counter;
+  }
   let node = list.head;
   while(node.next !== null){
     node = node.next;
@@ -121,8 +127,39 @@ function findLast(list){
 }
 
 
+function findMiddle(list){
 
+}
 
+function findThirdToLast(list){
+  if(isEmpty(list)){
+    throw new Error('Empty List');
+  }
+  let secNodeToLast;
+  let firstNodeToLast;
+  let node = list.head;
+  let counter = 0;
+  while(node.next !== null){
+    if(counter ===1){
+      firstNodeToLast = node;
+      node = node.next;
+      counter++;
+    }
+    else if(counter >= 2){
+      secNodeToLast = firstNodeToLast;
+      firstNodeToLast = node;
+      node = node.next;
+      counter++;
+    }else{
+      node= node.next;
+      counter++;
+    }
+  }
+  if(secNodeToLast){
+    throw new Error('Linked List size is not at least 3');
+  }
+  return secNodeToLast;
+}
 
 
 
@@ -184,6 +221,13 @@ console.log('/////////////////');
 console.log('Verifying that counting works as intended');
 console.log('/////////////////');
 console.log(size(llist));
+console.log('/////////////////');
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Seeing if findThirdToLast is working');
+console.log('/////////////////');
+console.log(findThirdToLast(llist));
 console.log('/////////////////');
 console.log('/////////////////');
 

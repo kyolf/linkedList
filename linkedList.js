@@ -61,13 +61,39 @@ class LinkedList {
 }
 
 function printList(list){
-  for(let i=0; i < list.length; i++){
-    console.log('value:', list.get(i), 'index:', i);
+  if(isEmpty(list)){
+    console.log('Empty list');
+  }
+  else{
+    for(let i=0; i < list.length; i++){
+      console.log(list.get(i));
+    }
   }
 }
 
+function size(list){
+  return list.length;
+}
 
+function isEmpty(list){
+  if(list.length === 0){
+    return true;
+  }
+  return false;
+}
 
+function findPrevious(list, index){
+  if(isEmpty(list)){
+    throw new Error('Linked List is empty')
+  }
+  else if(size(list) < 2 || index === 0){
+    console.log('No prev item');
+    return ;
+  }
+  else{
+    return list.get(index-1);
+  }
+}
 
 
 

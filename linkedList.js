@@ -294,7 +294,6 @@ cycleList.insert(0,0);
 cycleList.insert(1,1);
 cycleList.insert(2,2);
 cycleList.insert(3,3);
-
 let cycle = cycleList._find(2);
 cycle.next = cycleList._find(0);
 

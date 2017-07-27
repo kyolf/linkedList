@@ -163,16 +163,25 @@ function findThirdToLast(list){
 
 function reverseList(list){
   let head = list.head;
+  console.log('head:', head);
   let node = head.next;
+  console.log('node:', node);
   head.next = null;
   let prevNode = head;
+  console.log('previous node:', prevNode);
   let next;
   while(node.next !== null){
+    console.log(node.next);
     next = node.next;
     node.next = prevNode;
+    prevNode = node;
     node = next;
   }
-  return printList(list);
+  if(node.next === null){
+    list.head = node;
+    list.head.next = prevNode;
+  }
+  return list;
 }
 
 
@@ -210,33 +219,33 @@ printList(llist);
 console.log('/////////////////');
 console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Is the one we just made empty?');
-console.log('/////////////////');
-console.log(isEmpty(llist));
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Is the one we just made empty?');
+// console.log('/////////////////');
+// console.log(isEmpty(llist));
+// console.log('/////////////////');
+// console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Finding the one before you nod');
-console.log('/////////////////');
-console.log(findPrevious('Just nod if you can hear me.', llist));
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Finding the one before you nod');
+// console.log('/////////////////');
+// console.log(findPrevious('Just nod if you can hear me.', llist));
+// console.log('/////////////////');
+// console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Finding the last node');
-console.log('/////////////////');
-console.log(findLast(llist));
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Finding the last node');
+// console.log('/////////////////');
+// console.log(findLast(llist));
+// console.log('/////////////////');
+// console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Verifying that counting works as intended');
-console.log('/////////////////');
-console.log(size(llist));
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Verifying that counting works as intended');
+// console.log('/////////////////');
+// console.log(size(llist));
+// console.log('/////////////////');
+// console.log('/////////////////');
 
 // console.log('/////////////////');
 // console.log('Seeing if findThirdToLast is working');
@@ -252,19 +261,19 @@ console.log(reverseList(llist));
 console.log('/////////////////');
 console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Creating A New, Empty Linked List.');
-console.log('/////////////////');
-const elist  = new LinkedList();
+// console.log('/////////////////');
+// console.log('Creating A New, Empty Linked List.');
+// console.log('/////////////////');
+// const elist  = new LinkedList();
 
-console.log('/////////////////');
-console.log('Is the empty one empty?');
-console.log('/////////////////');
-console.log(isEmpty(elist));
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Is the empty one empty?');
+// console.log('/////////////////');
+// console.log(isEmpty(elist));
+// console.log('/////////////////');
+// console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Can we inset into the first index 1 of an empty list?');
-console.log('/////////////////');
-elist.insert(1,':)');
+// console.log('/////////////////');
+// console.log('Can we inset into the first index 1 of an empty list?');
+// console.log('/////////////////');
+// elist.insert(1,':)');

@@ -60,6 +60,61 @@ class LinkedList {
   }
 }
 
+class doubleLinkedList{
+  constructor(){
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  insert(index, value){
+    if(index < 0 || index > this.length){
+      throw new Error('Incorrect Index');
+    }
+    const newNode = {value};
+    if(index === 0){
+      newNode.next = this.head;
+      this.head = newNode;
+      this.tail = newNode;
+      this.head.prev = null;
+    }
+    else{
+      if(index === this.length){
+        this.tail = newNode; 
+      }      
+      let node = this._find(index-1);
+      newNode.next = node.next;
+      node.next = newNode;
+      newNode.prev = node;  
+    }
+    this.length++;
+  }
+
+  delete(index){
+    if(index < 0 || index >= this.length){
+      throw new Error('Incorrect Index');
+    }
+    if(index === 0){
+      this.head = this.head.next;
+      this.head.prev = null;
+    }
+    else{
+      let node = this._find(index-1);
+      node.next.next.prev = node; 
+      node.next = node.next.next;
+    }
+    this.length--;
+  }
+
+  _find(index){
+    let node = this.head;
+    for(let i=0; i < index;i++){
+      node = node.next;
+    }
+    return node;
+  }
+}
+
 function printList(list){
   if(isEmpty(list)){
     console.log('Empty list');
@@ -194,6 +249,15 @@ function reverseList(list){
   return list;
 }
 
+function reverseDoubleList(list){
+  let node = list.tail;
+  while(node.prev!== null){
+    console.log(node.value);
+    node = node.prev;
+  }
+  console.log(node.value);
+}
+
 // function isCycleList(list){
 //   let node = list.head;
 //   const objTracker = {};
@@ -291,12 +355,12 @@ llist.insert(2, "I don't belong.");
 // console.log('/////////////////');
 // console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Testing reversal');
-console.log('/////////////////');
-console.log(reverseList(llist));
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Testing reversal');
+// console.log('/////////////////');
+// console.log(reverseList(llist));
+// console.log('/////////////////');
+// console.log('/////////////////');
 
 // console.log('/////////////////');
 // console.log('Creating A New, Empty Linked List.');
@@ -338,3 +402,16 @@ console.log('Finding the middle');
 console.log('/////////////////');
 console.log(findMiddle(llist));
 console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('dlist insertion');
+console.log('/////////////////');
+const dlist = new doubleLinkedList();
+dlist.insert(0,0);
+dlist.insert(1,1);
+dlist.insert(2,2);
+dlist.insert(2,3);
+dlist.delete(2);
+//console.log(dlist);
+console.log(reverseDoubleList(dlist));
+

@@ -161,6 +161,20 @@ function findThirdToLast(list){
   return secNodeToLast;
 }
 
+function reverseList(list){
+  let head = list.head;
+  let node = head.next;
+  head.next = null;
+  let prevNode = head;
+  let next;
+  while(node.next !== null){
+    next = node.next;
+    node.next = prevNode;
+    node = next;
+  }
+  return printList(list);
+}
+
 
 
 
@@ -224,10 +238,17 @@ console.log(size(llist));
 console.log('/////////////////');
 console.log('/////////////////');
 
+// console.log('/////////////////');
+// console.log('Seeing if findThirdToLast is working');
+// console.log('/////////////////');
+// console.log(findThirdToLast(llist));
+// console.log('/////////////////');
+// console.log('/////////////////');
+
 console.log('/////////////////');
-console.log('Seeing if findThirdToLast is working');
+console.log('Testing reversal');
 console.log('/////////////////');
-console.log(findThirdToLast(llist));
+console.log(reverseList(llist));
 console.log('/////////////////');
 console.log('/////////////////');
 

@@ -180,7 +180,18 @@ function reverseList(list){
   return list;
 }
 
-
+function isCycleList(list){
+  let node = list.head;
+  const objTracker = {};
+  while(node.next !== null){
+    if( objTracker[node.value]){
+      return true;
+    }
+    objTracker[node.value] = node.value;
+    node = node.next;
+  }
+  return false;
+}
 
 
 
@@ -196,24 +207,24 @@ llist.insert(2,'Just nod if you can hear me.');
 llist.insert(3,'Is there anybody home?');
 llist.insert(2, "I don't belong.");
 
-console.log('/////////////////');
-console.log('Running printList');
-console.log('/////////////////');
-printList(llist);
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Running printList');
+// console.log('/////////////////');
+// printList(llist);
+// console.log('/////////////////');
+// console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Deleting the one that doesn\'t belong');
-llist.delete(2);
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Deleting the one that doesn\'t belong');
+// llist.delete(2);
+// console.log('/////////////////');
 
-console.log('/////////////////');
-console.log('Running printList again');
-console.log('/////////////////');
-printList(llist);
-console.log('/////////////////');
-console.log('/////////////////');
+// console.log('/////////////////');
+// console.log('Running printList again');
+// console.log('/////////////////');
+// printList(llist);
+// console.log('/////////////////');
+// console.log('/////////////////');
 
 // console.log('/////////////////');
 // console.log('Is the one we just made empty?');
@@ -273,3 +284,22 @@ console.log('/////////////////');
 // console.log('Can we inset into the first index 1 of an empty list?');
 // console.log('/////////////////');
 // elist.insert(1,':)');
+
+console.log('/////////////////');
+console.log('Creating A cycle Linked List.');
+console.log('/////////////////');
+const cycleList  = new LinkedList();
+
+cycleList.insert(0,0);
+cycleList.insert(1,1);
+cycleList.insert(2,2);
+cycleList.insert(3,3);
+
+let cycle = cycleList._find(2);
+cycle.next = cycleList._find(0);
+
+console.log('/////////////////');
+console.log('Checking if is Cycle list works.');
+console.log('/////////////////');
+console.log(isCycleList(cycleList));
+console.log('/////////////////');

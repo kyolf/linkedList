@@ -163,15 +163,11 @@ function findThirdToLast(list){
 
 function reverseList(list){
   let head = list.head;
-  console.log('head:', head);
   let node = head.next;
-  console.log('node:', node);
   head.next = null;
   let prevNode = head;
-  console.log('previous node:', prevNode);
   let next;
   while(node.next !== null){
-    console.log(node.next);
     next = node.next;
     node.next = prevNode;
     prevNode = node;

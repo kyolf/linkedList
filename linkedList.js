@@ -65,7 +65,7 @@ function printList(list){
     console.log('Empty list');
   }
   else{
-    for(let i=0; i < list.length; i++){
+    for(let i=0; i < list.length; i++){ ///// CHANGE THIS TO WHILE LOOP
       console.log(list.get(i));
     }
   }
@@ -89,27 +89,36 @@ function isEmpty(list){
   return false;
 }
 
-function findPrevious(index, list){
+function findPrevious(value, list){
   if(isEmpty(list)){
-    throw new Error('Linked List is empty')
-  }
-  else if(size(list) < 2 || index === 0){
-    console.log('No prev item');
-    return ;
+    throw new Error('Linked List is empty');
   }
   else{
-    return list.get(index-1);
+    let node = list.head;
+    let prevNode;
+    if(node.value === value){
+      throw new Error('You searched for the head, there is no previous node!');
+    }
+    while(node.value !== value){
+      prevNode = node;
+      node = node.next;
+    }
+    return prevNode;
   }
 }
 
-// function findLast(index, list){
-//   if(isEmpty(list)){
-//     throw new Error('Linked List is empty');
-//   }
-//   else{
-
-//   }
-// }
+function findLast(list){
+  if(isEmpty(list)){
+    throw new Error('Linked List is empty');
+  }
+  else{
+    let node = list.head;
+    while(node.next !== null){
+      node = node.next;
+    }
+    return node;
+  }
+}
 
 
 
@@ -160,7 +169,14 @@ console.log('/////////////////');
 console.log('/////////////////');
 console.log('Finding the one before you nod');
 console.log('/////////////////');
-console.log(findPrevious(2, llist));
+console.log(findPrevious('Just nod if you can hear me.', llist));
+console.log('/////////////////');
+console.log('/////////////////');
+
+console.log('/////////////////');
+console.log('Finding the last node');
+console.log('/////////////////');
+console.log(findLast(llist));
 console.log('/////////////////');
 console.log('/////////////////');
 
